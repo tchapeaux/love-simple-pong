@@ -1,0 +1,19 @@
+{
+    "folders":
+    [
+        {
+            "follow_symlinks": true,
+            "path": "./",
+            "name": "love-pong",
+            "file_exclude_patterns": ["*.png", "*.gif", "*.gal", "*.xcf"],
+        }
+    ],
+    "build_systems":
+    [
+        {
+            "name": "LÖVE",
+            "cmd": ["love", "./"],
+            "selector": "source.lua"
+        }
+    ]
+}
