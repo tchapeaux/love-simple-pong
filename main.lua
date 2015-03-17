@@ -23,8 +23,13 @@ function love.load()
 end
 
 function love.draw()
+    local backgroundColor = {104, 34, 139}
+    local playerColor = {255, 130, 171}
+    local opponentColor= {102, 205, 0}
+    local neutralColor = {238, 201, 0}
+    love.graphics.setBackgroundColor(backgroundColor)
     love.graphics.setFont(scoreFont)
-    love.graphics.setColor(255, 255, 255)
+    love.graphics.setColor(neutralColor)
 
     for i, part in ipairs(particleSystems) do
         part:draw()
@@ -38,7 +43,7 @@ function love.draw()
         HEIGHT - 10)
 
     -- player
-    love.graphics.setColor(255, 128, 0)
+    love.graphics.setColor(playerColor)
     love.graphics.rectangle(
         "fill",
         PLAYER_X,
@@ -47,20 +52,20 @@ function love.draw()
         PLAYER_HEIGHT)
 
     -- opponent
-    love.graphics.setColor(127, 0, 255)
+    love.graphics.setColor(opponentColor)
     love.graphics.rectangle(
         "fill",
         WIDTH - PLAYER_X,
         opponent.Y - PLAYER_HEIGHT / 2,
         - PLAYER_WIDTH, PLAYER_HEIGHT)
 
-    love.graphics.setColor(255, 255, 255)
+    love.graphics.setColor(neutralColor)
     love.graphics.printf(player.score, 10, 10, WIDTH / 2, "center")
     love.graphics.printf(opponent.score, WIDTH / 2, 10, WIDTH / 2, "center")
 
     -- ball
     alpha = ball:timerFactor()
-    love.graphics.setColor(255, 255, 255, 255 * alpha)
+    love.graphics.setColor(neutralColor[1], neutralColor[2], neutralColor[3], 255 * alpha)
     love.graphics.rectangle("fill", ball.X - BALL_RAD, ball.Y - BALL_RAD, 2 * BALL_RAD, 2 * BALL_RAD)
     -- love.graphics.arc(
     --     "fill",
